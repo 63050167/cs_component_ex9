@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Radius to Area</title>
+</head>
+<body>
+    <h1>Radius to Area</h1>
+
+    <form action="/RtoA" method="GET">
+        <input type="number" name="radius" placeholder="Enter the radius of the circle">
+        <input type="submit" value="Calculate">
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        // Get the results element.
+        const resultsElement = document.getElementById("results");
+
+        // Create a function to display the area and perimeter of the circle.
+        function displayResults(area, perimeter) {
+            resultsElement.innerHTML = `
+                <h2>For the circle with radius = : ${area}</h2>
+                <h2>area is : ${perimeter}</h2>
+            `;
+        }
+
+        // Submit the form when the user clicks the "Calculate" button.
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get the radius of the circle from the form.
+            const radius = Number(this.radius.value);
+
+            // Calculate the area and perimeter of the circle.
+            const area = Math.PI * radius * radius;
+            const perimeter = 2 * Math.PI * radius;
+
+            // Display the area and perimeter of the circle.
+            displayResults(area, perimeter);
+        });
+    </script>
+</body>
+</html>
